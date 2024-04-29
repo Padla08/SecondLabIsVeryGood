@@ -1,7 +1,9 @@
-let str = "101tf11flb10001";
-let pattern = /10+1/g; // Шаблон для поиска подстрок "1[0]1"
+let str = "101001f0110a1";
+let pattern = /10+{1,3}1/g;
+let pattern2 = /10+{2,3}1/g;
 
-let match;
-while ((match = pattern.exec(str)) !== null) {
-    console.log(match[0]);
-}
+let matches = str.match(pattern);
+matches.forEach(match => console.log(match));
+
+let matches2 = str.match(pattern2);
+matches2.forEach(match => console.log(match));

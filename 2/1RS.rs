@@ -9,7 +9,7 @@ fn roman_to_int(s: String) -> i32 {
     roman_values.insert('C', 100);
     roman_values.insert('D', 500);
     roman_values.insert('M', 1000);
-	roman_values.insert('i', 1);
+    roman_values.insert('i', 1);
     roman_values.insert('v', 5);
     roman_values.insert('x', 10);
     roman_values.insert('l', 50);
@@ -21,7 +21,7 @@ fn roman_to_int(s: String) -> i32 {
     let mut prev_value = 0;
 
     for c in s.chars().rev() {
-        let current_value = roman_values[&c];
+        let current_value = *roman_values.get(&c).unwrap();
         if current_value < prev_value {
             result -= current_value;
         } else {
@@ -39,4 +39,6 @@ fn main() {
     std::io::stdin().read_line(&mut roman_number).unwrap();
     let roman_number = roman_number.trim().to_string();
 
-    let ar
+    let arabic_number = roman_to_int(roman_number);
+    println!("The Arabic numeral is: {}", arabic_number);
+}
